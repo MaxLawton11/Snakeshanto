@@ -1,17 +1,14 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
-
 const background = new Image(); background.src = './Assets/Background.jpg';
 const head = new Image(); head.src = './Assets/Head.png';
 const shirt = new Image(); shirt.src = './Assets/Shirt.png';
 const pants = new Image(); pants.src = './Assets/Pants.png';
 const dew = new Image(); dew.src = './Assets/Dew.png'
-
 const width = 14;
 const hight = 14;
 const margin = 17;
 const cellDem = 40.5;
-
 let snake = [17, 16, 15];
 let direction = 0;
 let dewPos = 25;
