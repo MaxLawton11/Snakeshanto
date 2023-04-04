@@ -23,7 +23,7 @@ var timer=setInterval(MainLoop, 175);
 function firstRender() {
     background.onload = () => {
         ctx.drawImage(background, 0, 0);
-        displaySnake();
+        render()
     };
 }
 firstRender();
