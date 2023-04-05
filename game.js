@@ -25,7 +25,6 @@ function firstRender() {
 }
 firstRender();
 
-
 function MainLoop() {
     ctx.drawImage(background, 0, 0); //set background
     if (direction != 0) {
@@ -74,7 +73,7 @@ function checkDeath() {
         //hit itself
         var hasDuplicates = (arr) => arr.length !== new Set(arr).size;
         if (hasDuplicates(snake)) { return true; }
-        else { return false; } //pass with all
+        else { return false; } //pass with all so return
     }
 }
 
@@ -94,8 +93,8 @@ function spawnDew() {
 }
 
 document.addEventListener('keydown', function(event) {
-    if(event.keyCode === 39 ) { direction = 1; } //right arrow
-    else if(event.keyCode === 37 ) { direction = -1; } //left arrow
-    else if(event.keyCode === 38 ) { direction = -width; } //up arrow
-    else if(event.keyCode === 40 ) { direction = width; }//down arrow
+    if(event.keyCode === 39 && direction !== -1) { direction = 1; } //right arrow
+    else if(event.keyCode === 37 && direction !== 1) { direction = -1; } //left arrow
+    else if(event.keyCode === 38 && direction !== width) { direction = -width; } //up arrow
+    else if(event.keyCode === 40 && direction !== -width) { direction = width; }//down arrow
 });
