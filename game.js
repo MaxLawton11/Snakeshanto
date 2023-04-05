@@ -14,16 +14,8 @@ let direction = 0;
 let dewPos = 25;
 let eaten = false;
 
-
-var timer=setInterval(MainLoop, 175);
-
-function firstRender() {
-    background.onload = () => {
-        ctx.drawImage(background, 0, 0);
-        render()
-    };
-}
 firstRender();
+var timer=setInterval(MainLoop, 175);
 
 function MainLoop() {
     ctx.drawImage(background, 0, 0); //set background
@@ -62,6 +54,13 @@ function render() {
     var y = Math.floor(dewPos/14);
     var x = dewPos - (14*y);
     ctx.drawImage(dew, x*cellDem+margin, y*cellDem+margin, 40, 40);
+}
+
+function firstRender() {
+    background.onload = () => {
+        ctx.drawImage(background, 0, 0);
+        render()
+    };
 }
 
 function checkDeath() {
