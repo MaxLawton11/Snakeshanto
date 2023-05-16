@@ -14,9 +14,17 @@ let direction = 0;
 let dewPos = 25;
 let eaten = false;
 
-firstRender();
-var timer=setInterval(MainLoop, 175);
+// disable scroll form arow keys
+canvas.onkeydown = function (e) {
+    if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+        e.view.event.preventDefault();
+    }
+}
 
+firstRender();
+var timer=setInterval(MainLoop, 175); //main time loop
+
+// main loop function
 function MainLoop() {
     ctx.drawImage(background, 0, 0); //set background
     if (direction != 0) {
@@ -31,12 +39,14 @@ function MainLoop() {
     render();
 }
 
+//shift the snake in the direction it is moving
 function shiftSnake() {
     if (eaten === true) { eaten = false; }
     else { snake.pop(); }
     snake.unshift(snake[0]+direction);
 }
 
+//render frame
 function render() {
     //for the snake
     for (var i = 0; i < snake.length; i++) {
@@ -56,6 +66,7 @@ function render() {
     ctx.drawImage(dew, x*cellDem+margin, y*cellDem+margin, 40, 40);
 }
 
+//first reader the waits for img load
 function firstRender() {
     background.onload = () => {
         ctx.drawImage(background, 0, 0);
@@ -63,6 +74,7 @@ function firstRender() {
     };
 }
 
+//see if snake is dead
 function checkDeath() {
     if (snake[0] % 14 === 13 && direction === 1) {return true; } //left wall dect
     else if (snake[0] % 14 === 0 && direction === -1) {return true; } //right wall dect
@@ -76,6 +88,7 @@ function checkDeath() {
     }
 }
 
+//test to see if the snake is over the dew (eaten)
 function testDew() {
     if (snake.includes(dewPos)) { 
         eaten = true; 
@@ -83,6 +96,7 @@ function testDew() {
     } 
 }
 
+//spawn a new dew
 function spawnDew() {
     var ranPos = Math.floor(Math.random() * 196);
     while (snake.includes(ranPos)) {
@@ -91,6 +105,7 @@ function spawnDew() {
     dewPos = ranPos;
 }
 
+//get key inputs
 document.addEventListener('keydown', function(event) {
     if(event.keyCode === 39 && direction !== -1) { direction = 1; } //right arrow
     else if(event.keyCode === 37 && direction !== 1) { direction = -1; } //left arrow
