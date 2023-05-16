@@ -96,4 +96,9 @@ document.addEventListener('keydown', function(event) {
     else if(event.keyCode === 37 && direction !== 1) { direction = -1; } //left arrow
     else if(event.keyCode === 38 && direction !== width) { direction = -width; } //up arrow
     else if(event.keyCode === 40 && direction !== -width) { direction = width; }//down arrow
+    
+    else if(event.keyCode === 65 && direction !== -1) { direction = 1; } //d
+    else if(event.keyCode === 68 && direction !== 1) { direction = -1; } //a
+    else if(event.keyCode === 87 && direction !== width) { direction = -width; } //w
+    else if(event.keyCode === 83 && direction !== -width) { direction = width; }//s
 });
