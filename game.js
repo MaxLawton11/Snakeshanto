@@ -16,7 +16,7 @@ let eaten = false;
 
 // disable scroll form arow keys
 canvas.onkeydown = function (e) {
-    if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+    if (e.event.keyCode === 38 || e.event.keyCode === 40) {
         e.view.event.preventDefault();
     }
 }
