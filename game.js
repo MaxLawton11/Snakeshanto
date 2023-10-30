@@ -14,11 +14,12 @@ let direction = 0;
 let dewPos = 25;
 let eaten = false;
 
-// disable scroll form arow keys
+// disable scroll
 canvas.onkeydown = function (e) {
-    if (e.event.keyCode === 38 || e.event.keyCode === 40) {
-        e.view.event.preventDefault();
-    }
+  window.addEventListener('DOMMouseScroll', preventDefault, false); // older FF
+  window.addEventListener(wheelEvent, preventDefault, wheelOpt); // modern desktop
+  window.addEventListener('touchmove', preventDefault, wheelOpt); // mobile
+  window.addEventListener('keydown', preventDefaultForScrollKeys, false);
 }
 
 firstRender();
